@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processos</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5; /* Fundo suave */
+        }
+        header {
+            background-color: #2E7D32; /* Verde escuro */
+            color: white;
+            display: flex;
+            align-items: center; /* Alinha verticalmente */
+            padding: 15px 20px; /* Espaçamento interno */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidade */
+        }
+        .logo img {
+            height: 60px; /* Altura do logotipo */
+            margin-right: 20px; /* Espaço entre logo e botão */
+            border-radius: 5px; /* Cantos arredondados */
+            transition: transform 0.3s; /* Efeito ao passar o mouse */
+        }
+        .logo img:hover {
+            transform: scale(1.05); /* Efeito de aumento ao passar o mouse */
+        }
+        nav {
+            position: relative; /* Para posicionar o menu suspenso */
+        }
+        .menu {
+            display: flex; /* Menu horizontal */
+            list-style: none; /* Remove marcadores da lista */
+            margin: 0; /* Remove margem */
+            padding: 0; /* Remove preenchimento */
+        }
+        .menu > li {
+            position: relative; /* Para o submenu */
+            margin-left: 20px; /* Espaço entre os itens */
+        }
+        .menu > li > a {
+            text-decoration: none; /* Remove underline */
+            color: white; /* Cor do texto */
+            font-weight: bold; /* Negrito */
+            padding: 10px 20px; /* Espaçamento interno dos botões */
+            border-radius: 5px; /* Cantos arredondados */
+            transition: background-color 0.3s, transform 0.3s; /* Transição suave */
+        }
+        .menu > li > a:hover {
+            background-color: #1B5E20; /* Verde mais escuro ao passar o mouse */
+            transform: translateY(-2px); /* Efeito de levantar */
+        }
+        .submenu {
+            display: none; /* Escondido por padrão */
+            position: absolute; /* Posiciona o submenu */
+            background-color: #2E7D32; /* Fundo do submenu */
+            padding: 10px 0; /* Espaçamento interno */
+            border-radius: 5px; /* Cantos arredondados */
+            z-index: 1; /* Para garantir que fique acima */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidade */
+        }
+        .menu > li:hover .submenu {
+            display: block; /* Mostra o submenu ao passar o mouse */
+        }
+        .submenu a {
+            color: white; /* Cor do texto */
+            padding: 8px 15px; /* Espaçamento interno */
+            display: block; /* Para que cada item ocupe a linha inteira */
+            text-decoration: none; /* Remove underline */
+            text-transform: capitalize; /* Primeira letra maiúscula */
+        }
+        .submenu a:hover {
+            background-color: #1B5E20; /* Verde ao passar o mouse */
+        }
+        .main-content {
+            padding: 20px; /* Espaçamento interno */
+            text-align: center; /* Centraliza o texto */
+        }
+        h1 {
+            color: #2E7D32; /* Cor do título */
+            margin-bottom: 10px; /* Espaço abaixo do título */
+        }
+        p {
+            color: #555; /* Cor do texto */
+            font-size: 16px; /* Tamanho da fonte */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBNXDpjIO04GdT9f0i1AoKisFJ8sDT-z5kWw&s" alt="Logotipo">
+        </div>
+        <nav>
+            <ul class="menu">
+                <li>
+                    <a href="#home">Processos</a>
+                    <ul class="submenu">
+                        <li><a href="#downsell" target="_blank">Downsell</a></li>
+                        <li><a href="./reten%C3%A7%C3%A3o.html" target="_blank">Retenção</a></li>
+                        <li><a href="#csat" target="_blank">CSAT</a></li>
+                        <li><a href="#inadimplencia" target="_blank">Inadimplência</a></li>
+                        <li><a href="#semaforo" target="_blank">Semáforo</a></li>
+                        <li><a href="file:///C:/Users/Alan%20Birsk/Desktop/Atribui%C3%A7%C3%B5es%20do%20suporte.html" target="_blank">Suporte</a></li>
+                        <li><a href="#detraitor" target="_blank">Detrator</a></li>
+                        <li><a href="#cancelamento" target="_blank">Cancelamento</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main-content">
+        <h1>Bem-vindo!</h1>
+        <p>Explore nossos processos e veja como podemos ajudar você.</p>
+    </div>
+
+</body>
+</html>
