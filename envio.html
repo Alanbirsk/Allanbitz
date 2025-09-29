@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Contatos WhatsApp</title>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -36,28 +37,25 @@
   <button id="enviar-todos" onclick="enviarTodos()">📤 Enviar para todos</button>
 
   <script>
-    async function carregarContatos() {
-      const url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR3d60JrIRDLKRT8B1Ld5iabDUGxtjP_Xvgal46OmVSrkjKHov-yp-97iTgAAZSJJgNhVyxUoMXnbMp/pub?output=csv";
-      try {
-        const resposta = await fetch(url);
-        const texto = await resposta.text();
+    const url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR3d60JrIRDLKRT8B1Ld5iabDUGxtjP_Xvgal46OmVSrkjKHov-yp-97iTgAAZSJJgNhVyxUoMXnbMp/pub?output=csv";
 
-        const linhas = texto.split(/\r?\n/).filter(l => l.trim() !== "");
+    window.contatos = [];
+
+    Papa.parse(url, {
+      download: true,
+      header: true,
+      complete: function(results) {
         const lista = document.getElementById("lista-contatos");
         lista.innerHTML = "";
-        window.contatos = [];
 
-        for (let i = 1; i < linhas.length; i++) {
-          const partes = linhas[i].split(",");
-          if (partes.length < 2) continue;
+        results.data.forEach(contato => {
+          const numero = contato["Número"]?.replace(/\D/g, "").trim();
+          const nome = contato["Nome"]?.trim();
 
-          const numero = partes[0].replace(/\D/g, "").trim();
-          const nome = partes[1].trim();
-          if (!numero || !nome) continue;
+          if (!numero || !nome) return;
 
           const mensagem = `Olá ${nome}, tudo bem?`;
-          const contato = { numero, nome, mensagem };
-          window.contatos.push(contato);
+          window.contatos.push({ numero, nome, mensagem });
 
           const div = document.createElement("div");
           div.className = "contato";
@@ -67,16 +65,17 @@
             <button onclick="enviarIndividual('${numero}', '${encodeURIComponent(mensagem)}')">Enviar mensagem</button>
           `;
           lista.appendChild(div);
-        }
+        });
 
         if (window.contatos.length === 0) {
           lista.innerHTML = "Nenhum contato encontrado.";
         }
-      } catch (erro) {
+      },
+      error: function(err) {
         document.getElementById("lista-contatos").innerText = "Erro ao carregar contatos.";
-        console.error("Erro ao buscar a planilha:", erro);
+        console.error("Erro ao buscar a planilha:", err);
       }
-    }
+    });
 
     function enviarIndividual(numero, mensagemCodificada) {
       const url = `https://wa.me/${numero}?text=${mensagemCodificada}`;
@@ -89,8 +88,6 @@
         window.open(url, "_blank");
       });
     }
-
-    carregarContatos();
   </script>
 </body>
 </html>
